@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/CoreLogo.jpg" width={50} height={50} alt="logo" />
+            <Image src="/CoreLogo.png" width={50} height={50} alt="logo" />
             <span className="text-xl font-bold text-gray-900">Development</span>
           </Link>
 
@@ -47,13 +47,19 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-              Get Involved
+            <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50" asChild>
+              <Link href="/projects">
+                Get Involved
+              </Link>
             </Button>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white">Contact Us</Button>
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white" asChild>
+              <Link href="/contact">
+                Contact Us
+              </Link>
+            </Button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu */} 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
