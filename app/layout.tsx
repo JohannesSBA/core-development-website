@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: '/CoreLogo.png', sizes: '16x16' },
-      { url: '/CoreLogo.png', sizes: '32x32' },
-      { url: '/CoreLogo.png', sizes: '48x48' },
-      { url: '/CoreLogo.png', type: 'image/png', sizes: '192x192' }
+      { url: '/fFavico.jpg', sizes: '16x16' },
+      { url: '/fFavico.jpg', sizes: '32x32' },
+      { url: '/fFavico.jpg', sizes: '48x48' },
+      { url: '/fFavico.jpg', type: 'image/png', sizes: '192x192' }
     ],
     apple: [
-      { url: '/CoreLogo.png', sizes: '180x180' }
+      { url: '/fFavico.jpg', sizes: '180x180' }
     ]
   },
   openGraph: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'CORE Development',
     images: [
       {
-        url: 'https://coredevelopment.africa/og-image.jpg',
+        url: 'https://coredevelopment.africa/fFavico.jpg',
         width: 1200,
         height: 630,
         alt: 'CORE Development sustainable initiatives in Africa',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CORE Development | Building Climate Resilience in Africa',
     description: 'Pioneering sustainable development solutions across African communities through innovation and partnership',
-    images: ['https://coredevelopment.africa/twitter-card.jpg'],
+    images: ['https://coredevelopment.africa/fFavico.jpg'],
   },
 }
 

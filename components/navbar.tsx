@@ -29,7 +29,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/CoreLogo.png" width={50} height={50} alt="logo" />
-            <span className="text-xl font-bold text-gray-900">Development</span>
+            {/* <span className="text-xl font-bold text-gray-900">Development</span> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -70,10 +70,9 @@ export default function Navbar() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-6 mt-6">
                 <Link href="/" className="flex items-center space-x-2">
-                  <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-green-600 to-orange-500 rounded-lg">
-                    <Leaf className="h-5 w-5 text-white" />
+                  <div className="flex items-center justify-center ">
+                    <Image src="/CoreLogo.png" width={30} height={30} alt="logo" />
                   </div>
-                  <span className="text-xl font-bold text-gray-900">CORE Development</span>
                 </Link>
 
                 <nav className="flex flex-col space-y-4">
@@ -89,12 +88,6 @@ export default function Navbar() {
                   ))}
                 </nav>
 
-                <div className="flex flex-col space-y-3 pt-6">
-                  <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-                    Get Involved
-                  </Button>
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white">Contact Us</Button>
-                </div>
               </div>
             </SheetContent>
           </Sheet>

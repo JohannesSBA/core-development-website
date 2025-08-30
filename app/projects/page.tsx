@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { Droplets, Users, Shield, ArrowRight, CheckCircle, Globe, Zap, Target, Award, MapPin } from "lucide-react"
+import { Droplets, Users, Shield, ArrowRight, CheckCircle, Globe, Zap, Target, Award, MapPin, Truck } from "lucide-react"
 import Image from "next/image"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
@@ -110,7 +110,7 @@ const projects = [
       communities: "15+ Centers",
       beneficiaries: "50,000+ People",
     },
-    image: "/Rec.png",
+    image: "/Rec.jpg",
   },
   {
     id: "smart-tap",
@@ -149,7 +149,7 @@ const projects = [
     features: [
       "100% Renewable Energy",
       "Reduces GHG Emissions",
-      "Saves $4 billion/year in fuel imports",
+      "Charging/Swapping Stations",
       "Job Creation & Training",
       "Electric Vehicle Infrastructure",
     ],
@@ -158,8 +158,9 @@ const projects = [
       communities: "3 Major Cities",
       beneficiaries: "1M+ Commuters",
     },
-    image: "/Ev-ph.png",
+    image: "/TukTuk.jpg",
   },
+  
 ]
 
 function ProjectSection({ project, index, isEven }: { project: any; index: number; isEven: boolean }) {
@@ -282,7 +283,7 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
               </CardContent>
             </Card> */}
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
                 className={`group transition-all duration-300 transform hover:scale-105 ${
@@ -306,7 +307,7 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                 <Users className="mr-2 h-5 w-5" />
                 Get Involved
               </Button>
-            </div>
+            </div> */}
           </div>
 
           {/* Image */}
@@ -446,13 +447,13 @@ export default function ProjectsPage() {
             <p className="text-teal-100 text-lg">Making a difference across communities in Ethiopia</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-            <div className="space-y-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center text-white">
+            {/* <div className="space-y-2">
               <div className="text-4xl font-bold">
                 <AnimatedCounter end={3} suffix="+" />
               </div>
               <p className="text-white/90">Active Projects</p>
-            </div>
+            </div> */}
             <div className="space-y-2">
               <div className="text-4xl font-bold">
                 <AnimatedCounter end={40} suffix="+" />

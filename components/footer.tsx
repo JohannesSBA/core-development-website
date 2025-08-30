@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Mail, Phone, Globe, Linkedin, Twitter, Facebook } from "lucide-react"
+import { MapPin, Mail, Phone, Globe, Linkedin, Twitter, Facebook, X } from "lucide-react"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-white/5 rounded-full animate-pulse"></div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+          {/* <div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
               <Globe className="h-4 w-4 text-white" />
               <span className="text-sm font-medium text-white">Join the Movement</span>
@@ -50,7 +50,7 @@ export default function Footer() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Footer Content */}
           <div className="grid gap-8 md:grid-cols-4 pt-16 border-t border-white/20">
@@ -77,7 +77,7 @@ export default function Footer() {
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 bg-transparent p-2"
                 >
-                  <Twitter className="h-4 w-4" />
+                  <Image src="/x-logo-white.png" alt="X" width={15} height={15} />
                 </Button>
                 <Button
                   size="sm"
@@ -89,67 +89,42 @@ export default function Footer() {
               </div>
             </div>
 
+             <div className="space-y-4">
+             
+            </div>
+
             {/* Company Links */}
             <div className="space-y-4">
               <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">Company</h4>
               <div className="space-y-3 text-sm flex flex-col">
                 <Link
-                  href="/about"
+                  href="/programs"
+                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
+                > 
+                  Programs
+                </Link>
+                <Link
+                  href="/projects"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
                 >
-                  About Us
+                  Projects  
                 </Link>
                 <Link
                   href="/founders"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
                 >
-                  Our Founders
+                  Founders
                 </Link>
-                <Link
-                  href="/organization"
-                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                >
-                  Organization
-                </Link>
+                
                 <Link
                   href="/contact"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
                 >
-                  Contact Us
+                  Contact
                 </Link>
               </div>
             </div>
-
-            {/* Services Links */}
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">Services</h4>
-              <div className="space-y-3 text-sm flex flex-col">
-                <Link
-                  href="/services"
-                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                >
-                  Climate Adaptation
-                </Link>
-                <Link
-                  href="/services"
-                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                >
-                  Sustainable Agriculture
-                </Link>
-                <Link
-                  href="/services"
-                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                >
-                  Renewable Energy
-                </Link>
-                <Link
-                  href="/services"
-                  className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                >
-                  Water Management
-                </Link>
-              </div>
-            </div>
+           
 
             {/* Contact Info */}
             <div className="space-y-4">
@@ -162,7 +137,7 @@ export default function Footer() {
                 <div className="flex items-center space-x-3 text-teal-100">
                   <Mail className="h-4 w-4 flex-shrink-0" />
                   <a href="mailto:info@coredevelopment.et" className="hover:text-white transition-colors">
-                    info@coredevelopment.et
+                    info@coredevelopment.org
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-teal-100">
@@ -173,7 +148,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3 text-teal-100">
                   <Globe className="h-4 w-4 flex-shrink-0" />
-                  <span>www.coredevelopment.et</span>
+                  <span>www.coredevelopment.org</span>
                 </div>
               </div>
             </div>
@@ -186,15 +161,7 @@ export default function Footer() {
                 <p>&copy; {new Date().getFullYear()} CORE Development. All rights reserved.</p>
               </div>
               <div className="flex space-x-6 text-sm text-teal-100">
-                <Link href="/privacy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-                <Link href="/cookies" className="hover:text-white transition-colors">
-                  Cookie Policy
-                </Link>
+                
               </div>
             </div>
           </div>

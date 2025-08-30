@@ -97,202 +97,17 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative bg-[#044248] py-20 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#044248] py-20 lg:py-32 h-screen overflow-y-hidden">
+        <Image src="/backgroundDots.png" alt="CORE Development Logo" width={1000} height={1000} className="absolute top-0 -right-80 z-100" />
+
         {/* Background Pattern */}
         <div className="absolute inset-0">
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            {/* Background gradient - dark blue-grey */}
-            <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#044248/10" stopOpacity="1" />
-              <stop offset="50%" stopColor="#044248" stopOpacity="1" />
-              <stop offset="100%" stopColor="#044248" stopOpacity="1" />
-            </linearGradient>
-            
-            {/* Light gray node gradients only */}
-            <radialGradient id="nodeGradient0" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#d1d5db" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.3" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.85" />
-              <stop offset="60%" stopColor="#e5e7eb" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.25" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.8" />
-              <stop offset="70%" stopColor="#f3f4f6" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.2" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient3" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.75" />
-              <stop offset="80%" stopColor="#f9fafb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.15" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient4" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#d1d5db" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.3" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient5" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.85" />
-              <stop offset="60%" stopColor="#e5e7eb" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.35" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient6" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.9" />
-              <stop offset="70%" stopColor="#f3f4f6" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.4" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient7" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-              <stop offset="80%" stopColor="#f9fafb" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.3" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient8" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.75" />
-              <stop offset="55%" stopColor="#d1d5db" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.25" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient9" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.8" />
-              <stop offset="65%" stopColor="#e5e7eb" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.3" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient10" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.85" />
-              <stop offset="75%" stopColor="#f3f4f6" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.35" />
-            </radialGradient>
-            
-            <radialGradient id="nodeGradient11" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-              <stop offset="85%" stopColor="#f9fafb" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.4" />
-            </radialGradient>
-            
-            {/* Light gray connection line gradients only */}
-            <linearGradient id="lineGradient0" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f9fafb" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient6" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient7" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f9fafb" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient8" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#e5e7eb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#d1d5db" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient9" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient10" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f9fafb" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f3f4f6" stopOpacity="0.5" />
-            </linearGradient>
-            
-            <linearGradient id="lineGradient11" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f9fafb" stopOpacity="0.5" />
-            </linearGradient>
-          </defs>
           
-          {/* Background gradient */}
-          <rect width="100" height="100" fill="url(#bgGradient)" />
-          
-          {/* Connection lines */}
-          <g>
-            {connections.map((connection, index) => (
-              <line
-                key={`connection-${index}`}
-                x1={connection.from.x}
-                y1={connection.from.y}
-                x2={connection.to.x}
-                y2={connection.to.y}
-                stroke={`url(#lineGradient${connection.clusterId})`}
-                strokeWidth={Math.random() * 0.2 + 0.2} // Varying stroke width 0.2-0.4
-                opacity={0.4 + Math.random() * 0.3} // Varying opacity 0.4-0.7
-                className="animate-pulse-slow"
-                style={{
-                  animationDelay: `${connection.clusterId * 0.15}s`,
-                  animationDuration: '3s + ' + Math.random() * 2 + 's'
-                }}
-              />
-            ))}
-          </g>
-          
-          {/* Nodes */}
-          <g>
-            {nodes.map((node, index) => (
-              <circle
-                key={`node-${index}`}
-                cx={node.x}
-                cy={node.y}
-                r={node.radius}
-                fill={`url(#nodeGradient${node.clusterId})`}
-                className="animate-pulse-slow"
-                style={{
-                  animationDelay: `${node.clusterId * 0.1 + index * 0.05}s`,
-                  animationDuration: '2.5s + ' + Math.random() * 1.5 + 's'
-                }}
-              />
-            ))}
-          </g>
-        </svg>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#E27025]/40 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-24 h-24 bg-[#E27025]/40 rounded-full animate-bounce"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#E27025]/40 rounded-full animate-ping"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-[#E27025]/40 rounded-full animate-pulse"></div>
+        
       </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -352,9 +167,9 @@ export default function HomePage() {
             </div>
 
             {/* CORE Logo Section */}
-            <div className="relative flex justify-center lg:justify-end">
+            {/* <div className="relative flex justify-center lg:justify-end">
               <div className="relative">
-                {/* Logo Container with Glow Effect */}
+
                 <div className="relative p-8 bg-white/10 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 border border-white/20">
                   <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-3xl opacity-50"></div>
                   <Image
@@ -367,7 +182,7 @@ export default function HomePage() {
                   />
                 </div>
 
-                {/* Floating Brand Elements */}
+
                 <div className="absolute -top-4 -right-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-bounce duration-[4s]">
                   Est. 2024
                 </div>
@@ -375,7 +190,7 @@ export default function HomePage() {
                   Ethiopia
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -503,3 +318,11 @@ export default function HomePage() {
     </div>
   )
 }
+
+
+
+{/*
+
+
+
+*/}
