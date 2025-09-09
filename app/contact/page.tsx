@@ -205,15 +205,15 @@ export default function ContactPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">info@coredevelopment.commitment</span>
+                    <span className="text-gray-700">seleshiba@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">+251 00 000 0000</span>
+                    <span className="text-gray-700">+251 11 123 4567</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Globe className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">www.coredevelopment.com</span>
+                    <span className="text-gray-700">www.coredevelopment.org</span>
                   </div>
                 </CardContent>
               </Card>
