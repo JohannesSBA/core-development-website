@@ -88,7 +88,7 @@ export default function OrganizationalHoverCard({
             </div>
             
             {/* Stats row if provided */}
-            {stats && (
+{/*             {stats && (
               <div className="grid grid-cols-3 gap-2 lg:gap-4 mt-3 lg:mt-4 pt-3 lg:pt-4 border-t border-white/20">
                 {stats.communities && (
                   <div className="text-center">
@@ -112,11 +112,11 @@ export default function OrganizationalHoverCard({
             )}
           </div>
 
-          {/* Content */}
+
           <div className="p-4 lg:p-6">
             <p className="text-gray-700 leading-relaxed mb-4 text-sm lg:text-base">{description}</p>
             
-            {/* Image if provided */}
+
             {image && (
               <div className="mb-4">
                 <img 
@@ -127,7 +127,7 @@ export default function OrganizationalHoverCard({
               </div>
             )}
           </div>
-
+ */}
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-orange-100 to-teal-100 rounded-full opacity-20 -translate-y-8 lg:-translate-y-10 translate-x-8 lg:translate-x-10"></div>
           <div className="absolute bottom-0 left-0 w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-tr from-teal-100 to-orange-100 rounded-full opacity-20 translate-y-6 lg:translate-y-8 -translate-x-6 lg:-translate-x-8"></div>
