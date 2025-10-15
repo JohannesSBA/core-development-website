@@ -1,9 +1,25 @@
-"use client"
+"use client";
 import Navbar from "@/components/navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@radix-ui/react-select";
-import { CheckCircle, Send, Mail, Phone, Globe, Linkedin, Twitter, Facebook, Clock } from "lucide-react";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@radix-ui/react-select";
+import {
+  CheckCircle,
+  Send,
+  Mail,
+  Phone,
+  Globe,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Clock,
+} from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -11,8 +27,7 @@ import { Input } from "@/components/ui/input";
 import Footer from "@/components/footer";
 
 export default function ContactPage() {
-
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     organization: "",
@@ -21,28 +36,28 @@ export default function ContactPage() {
     message: "",
     budget: "",
     timeline: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setIsSubmitting(false);
+    setIsSubmitted(true);
 
     // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
+      setIsSubmitted(false);
       setFormData({
         name: "",
         email: "",
@@ -52,13 +67,13 @@ export default function ContactPage() {
         message: "",
         budget: "",
         timeline: "",
-      })
-    }, 3000)
-  }
-    return (
-        <div>
-            <Navbar />
-            <section className="relative bg-gradient-to-br from-green-50 via-white to-orange-50 py-20 lg:py-32">
+      });
+    }, 3000);
+  };
+  return (
+    <div>
+      <Navbar />
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-orange-50 py-20 lg:py-32">
         <div className="absolute inset-0 opacity-5">
           <div className="w-full h-full bg-gradient-to-r from-green-100 to-orange-100"></div>
         </div>
@@ -69,11 +84,14 @@ export default function ContactPage() {
             </div>
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl text-gray-900">
               Get in{" "}
-              <span className="bg-gradient-to-r from-green-600 to-orange-500 bg-clip-text text-transparent">Touch</span>
+              <span className="bg-gradient-to-r from-green-600 to-orange-500 bg-clip-text text-transparent">
+                Touch
+              </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your community with sustainable solutions? We're here to help you create lasting impact
-              across Africa. Let's start the conversation.
+              Ready to transform your community with sustainable solutions?
+              We're here to help you create lasting impact across Africa. Let's
+              start the conversation.
             </p>
           </div>
         </div>
@@ -84,9 +102,12 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Send Us a Message</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+                  Send Us a Message
+                </h2>
                 <p className="text-lg text-gray-600">
-                  Fill out the form below and we'll get back to you within as soon as possible.
+                  Fill out the form below and we'll get back to you within as
+                  soon as possible.
                 </p>
               </div>
 
@@ -94,8 +115,13 @@ export default function ContactPage() {
                 <Card className="border-green-200 bg-green-50">
                   <CardContent className="p-8 text-center">
                     <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-green-800 mb-2">Message Sent!</h3>
-                    <p className="text-green-700">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    <h3 className="text-2xl font-bold text-green-800 mb-2">
+                      Message Sent!
+                    </h3>
+                    <p className="text-green-700">
+                      Thank you for reaching out. We'll get back to you within
+                      24 hours.
+                    </p>
                   </CardContent>
                 </Card>
               ) : (
@@ -108,7 +134,9 @@ export default function ContactPage() {
                           <Input
                             id="name"
                             value={formData.name}
-                            onChange={(e: { target: { value: string; }; }) => handleInputChange("name", e.target.value)}
+                            onChange={(e: { target: { value: string } }) =>
+                              handleInputChange("name", e.target.value)
+                            }
                             placeholder="Your full name"
                             required
                             className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
@@ -120,7 +148,9 @@ export default function ContactPage() {
                             id="email"
                             type="email"
                             value={formData.email}
-                            onChange={(e: { target: { value: string; }; }) => handleInputChange("email", e.target.value)}
+                            onChange={(e: { target: { value: string } }) =>
+                              handleInputChange("email", e.target.value)
+                            }
                             placeholder="your.email@example.com"
                             required
                             className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
@@ -134,7 +164,9 @@ export default function ContactPage() {
                           <Input
                             id="organization"
                             value={formData.organization}
-                            onChange={(e: { target: { value: string; }; }) => handleInputChange("organization", e.target.value)}
+                            onChange={(e: { target: { value: string } }) =>
+                              handleInputChange("organization", e.target.value)
+                            }
                             placeholder="Your organization"
                             className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
                           />
@@ -144,8 +176,10 @@ export default function ContactPage() {
                           <Input
                             id="phone"
                             value={formData.phone}
-                            onChange={(e: { target: { value: string; }; }) => handleInputChange("phone", e.target.value)}
-                            placeholder="+251 11 123 4567"
+                            onChange={(e: { target: { value: string } }) =>
+                              handleInputChange("phone", e.target.value)
+                            }
+                            placeholder="+251 00 000 0000"
                             className="transition-all duration-300 focus:ring-2 focus:ring-green-500"
                           />
                         </div>
@@ -156,7 +190,9 @@ export default function ContactPage() {
                         <Textarea
                           id="message"
                           value={formData.message}
-                          onChange={(e) => handleInputChange("message", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("message", e.target.value)
+                          }
                           placeholder="Tell us about your project, goals, and how we can help..."
                           rows={5}
                           required
@@ -191,29 +227,38 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Contact Information</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+                  Contact Information
+                </h2>
                 <p className="text-lg text-gray-600">
-                  Reach out to us directly or visit one of our offices across Africa.
+                  Reach out to us directly or visit one of our offices across
+                  Africa.
                 </p>
               </div>
 
               {/* Quick Contact */}
               <Card className="shadow-lg border-green-200">
                 <CardHeader>
-                  <CardTitle className="text-green-800">Quick Contact</CardTitle>
+                  <CardTitle className="text-green-800">
+                    Quick Contact
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">seleshiba@gmail.com</span>
+                    <span className="text-gray-700">
+                      info@coredevelopment.org
+                    </span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">+251 11 123 4567</span>
+                    <span className="text-gray-700">+251 91 178 1859</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Globe className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">www.coredevelopment.org</span>
+                    <span className="text-gray-700">
+                      www.coredevelopment.org
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -225,28 +270,38 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-4">
-                    <Button size="sm" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-50">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-blue-500 text-blue-600 hover:bg-blue-50"
+                    >
                       <Linkedin className="h-4 w-4 mr-2" />
                       LinkedIn
                     </Button>
-                    <Button size="sm" variant="outline" className="border-blue-400 text-blue-500 hover:bg-blue-50">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-blue-400 text-blue-500 hover:bg-blue-50"
+                    >
                       <Twitter className="h-4 w-4 mr-2" />
                       Twitter
                     </Button>
-                    <Button size="sm" variant="outline" className="border-blue-600 text-blue-700 hover:bg-blue-50">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-blue-600 text-blue-700 hover:bg-blue-50"
+                    >
                       <Facebook className="h-4 w-4 mr-2" />
                       Facebook
                     </Button>
                   </div>
                 </CardContent>
               </Card>
-
-              
             </div>
           </div>
         </div>
       </section>
       <Footer />
-        </div>
-    )
+    </div>
+  );
 }

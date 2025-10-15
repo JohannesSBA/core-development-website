@@ -1,9 +1,18 @@
-"use client"
+"use client";
 
-import { MapPin, Mail, Phone, Globe, Linkedin, Twitter, Facebook, X } from "lucide-react"
-import { Button } from "./ui/button"
-import Link from "next/link"
-import Image from "next/image"
+import {
+  MapPin,
+  Mail,
+  Phone,
+  Globe,
+  Linkedin,
+  Twitter,
+  Facebook,
+  X,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -57,12 +66,21 @@ export default function Footer() {
             {/* Company Info */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <Image src="/CoreLogo.png" alt="CORE Development" width={32} height={32} className="w-8 h-8" />
-                <h3 className="text-xl font-bold text-white">CORE Development</h3>
+                <Image
+                  src="/CoreLogo.png"
+                  alt="CORE Development"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+                <h3 className="text-xl font-bold text-white">
+                  CORE Development
+                </h3>
               </div>
               <p className="text-teal-100 leading-relaxed text-sm">
-                Climate Oriented Resilience, Empowerment & Development - Leading Africa's transition to climate
-                resilient and sustainable development.
+                Climate Oriented Resilience, Empowerment & Development - Leading
+                Africa's transition to climate resilient and sustainable
+                development.
               </p>
               <div className="flex space-x-3">
                 <Button
@@ -77,7 +95,12 @@ export default function Footer() {
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 bg-transparent p-2"
                 >
-                  <Image src="/x-logo-white.png" alt="X" width={15} height={15} />
+                  <Image
+                    src="/x-logo-white.png"
+                    alt="X"
+                    width={15}
+                    height={15}
+                  />
                 </Button>
                 <Button
                   size="sm"
@@ -89,25 +112,25 @@ export default function Footer() {
               </div>
             </div>
 
-             <div className="space-y-4">
-             
-            </div>
+            <div className="space-y-4"></div>
 
             {/* Company Links */}
             <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">Company</h4>
+              <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">
+                Company
+              </h4>
               <div className="space-y-3 text-sm flex flex-col">
                 <Link
                   href="/programs"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
-                > 
+                >
                   Programs
                 </Link>
                 <Link
                   href="/projects"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
                 >
-                  Projects  
+                  Projects
                 </Link>
                 <Link
                   href="/founders"
@@ -115,7 +138,7 @@ export default function Footer() {
                 >
                   Founders
                 </Link>
-                
+
                 <Link
                   href="/contact"
                   className="text-teal-100 hover:text-white transition-colors duration-200 hover:translate-x-1 transform"
@@ -124,11 +147,12 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-           
 
             {/* Contact Info */}
             <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">Contact</h4>
+              <h4 className="text-sm font-semibold text-orange-300 uppercase tracking-wider">
+                Contact
+              </h4>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start space-x-3 text-teal-100">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
@@ -136,14 +160,20 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3 text-teal-100">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <a href="mailto:info@coredevelopment.et" className="hover:text-white transition-colors">
+                  <a
+                    href="mailto:info@coredevelopment.org"
+                    className="hover:text-white transition-colors"
+                  >
                     info@coredevelopment.org
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-teal-100">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <a href="tel:+251111234567" className="hover:text-white transition-colors">
-                    +251 11 123 4567
+                  <a
+                    href="tel:+251 91 178 1859"
+                    className="hover:text-white transition-colors"
+                  >
+                    +251 91 178 1859
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-teal-100">
@@ -158,15 +188,16 @@ export default function Footer() {
           <div className="border-t border-white/20 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="text-sm text-teal-100">
-                <p>&copy; {new Date().getFullYear()} CORE Development. All rights reserved.</p>
+                <p>
+                  &copy; {new Date().getFullYear()} CORE Development. All rights
+                  reserved.
+                </p>
               </div>
-              <div className="flex space-x-6 text-sm text-teal-100">
-                
-              </div>
+              <div className="flex space-x-6 text-sm text-teal-100"></div>
             </div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
