@@ -1,36 +1,51 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import { Droplets, Users, Shield, ArrowRight, CheckCircle, Globe, Zap, Target, Award, MapPin, Truck } from "lucide-react"
-import Image from "next/image"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import Aurora from "@/components/Aurora"
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import {
+  Droplets,
+  Users,
+  Shield,
+  ArrowRight,
+  CheckCircle,
+  Globe,
+  Zap,
+  Target,
+  Award,
+  MapPin,
+  Truck,
+} from "lucide-react";
+import Image from "next/image";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import Aurora from "@/components/Aurora";
 
 // Custom hook for scroll animations
-function useScrollAnimation({ threshold = 0.1, rootMargin = "0px 0px -20% 0px" } = {}) {
-  const [visible, setVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+function useScrollAnimation({
+  threshold = 0.1,
+  rootMargin = "0px 0px -20% 0px",
+} = {}) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
-          observer.unobserve(entry.target)
+          setVisible(true);
+          observer.unobserve(entry.target);
         }
       },
       { threshold, rootMargin },
-    )
+    );
 
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [threshold, rootMargin])
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold, rootMargin]);
 
-  return [ref, visible] as const
+  return [ref, visible] as const;
 }
 
 // Animated counter component
@@ -39,55 +54,82 @@ function AnimatedCounter({
   duration = 2000,
   suffix = "",
 }: {
-  end: number
-  duration?: number
-  suffix?: string
+  end: number;
+  duration?: number;
+  suffix?: string;
 }) {
-  const countRef = useRef(0)
-  const hasAnimatedRef = useRef(false)
-  const elementRef = useRef<HTMLSpanElement>(null)
+  const countRef = useRef(0);
+  const hasAnimatedRef = useRef(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimatedRef.current) {
-          hasAnimatedRef.current = true
-          let startTime: number
+          hasAnimatedRef.current = true;
+          let startTime: number;
           const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime
-            const progress = Math.min((currentTime - startTime) / duration, 1)
-            const newCount = Math.floor(progress * end)
-            countRef.current = newCount
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const newCount = Math.floor(progress * end);
+            countRef.current = newCount;
 
             if (elementRef.current) {
-              elementRef.current.textContent = `${newCount}${suffix}`
+              elementRef.current.textContent = `${newCount}${suffix}`;
             }
 
             if (progress < 1) {
-              requestAnimationFrame(animate)
+              requestAnimationFrame(animate);
             }
-          }
-          requestAnimationFrame(animate)
+          };
+          requestAnimationFrame(animate);
         }
       },
       { threshold: 0.5 },
-    )
+    );
 
     if (elementRef.current) {
-      observer.observe(elementRef.current)
+      observer.observe(elementRef.current);
     }
 
     return () => {
       if (elementRef.current) {
-        observer.unobserve(elementRef.current)
+        observer.unobserve(elementRef.current);
       }
-    }
-  }, [end, duration, suffix])
+    };
+  }, [end, duration, suffix]);
 
-  return <span ref={elementRef}>0{suffix}</span>
+  return <span ref={elementRef}>0{suffix}</span>;
 }
 
 const projects = [
+  {
+    id: "charging-stations",
+    title: "Charging Stations",
+    icon: Shield,
+    color: "teal",
+    category: "Clean Transportation",
+    location: "Ethiopia",
+    status: "Active",
+    description:
+      "Deploying 100% renewable energy charging stations for electric vehicles in major cities across Ethiopia.",
+    mapLink: "https://maps.app.goo.gl/KiUiHgPMbrWtYaDLA",
+    mapEmbedSrc:
+      "https://www.google.com/maps?q=9.0231303,38.7750861&z=18&output=embed",
+    features: [
+      "100% Renewable Energy",
+      "Reduces GHG Emissions",
+      "Charging/Swapping Stations",
+      "Job Creation & Training",
+      "Electric Vehicle Infrastructure",
+    ],
+    impact: {
+      capacity: "Electric vehicle ecosystem",
+      communities: "Major Cities",
+      beneficiaries: "1M+ Commuters",
+    },
+    image: "/Rec.jpg",
+  },
   {
     id: "rural-economic",
     title: "Rural Economic Centers",
@@ -95,7 +137,7 @@ const projects = [
     color: "teal",
     category: "Community Development",
     location: "Ethiopia",
-    status: "Active",
+    status: "",
     description:
       "Empowering Kebele and Woreda Administration Centers and enabling vibrant communities through integrated economic solutions.",
     features: [
@@ -160,24 +202,41 @@ const projects = [
     },
     image: "/TukTuk.jpg",
   },
-  
-]
+];
 
-function ProjectSection({ project, index, isEven }: { project: any; index: number; isEven: boolean }) {
-  const [projectRef, projectVisible] = useScrollAnimation({ rootMargin: "0px 0px -10% 0px" })
+function ProjectSection({
+  project,
+  index,
+  isEven,
+}: {
+  project: any;
+  index: number;
+  isEven: boolean;
+}) {
+  const [projectRef, projectVisible] = useScrollAnimation({
+    rootMargin: "0px 0px -10% 0px",
+  });
 
   return (
     <section
       ref={projectRef}
-      className={`py-20 lg:py-32 ${isEven ? "bg-white" : "bg-gradient-to-br from-gray-50 to-white"}`}
+      className={`py-20 lg:py-32 ${
+        isEven ? "bg-white" : "bg-gradient-to-br from-gray-50 to-white"
+      }`}
     >
       <div
         className={`container mx-auto px-4 md:px-6 transition-all duration-1000 delay-200 ${
-          projectVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          projectVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
         }`}
       >
         {/* Rest of the project content remains the same */}
-        <div className={`grid gap-16 lg:gap-20 lg:grid-cols-2 items-center ${!isEven ? "lg:grid-flow-col-dense" : ""}`}>
+        <div
+          className={`grid gap-16 lg:gap-20 lg:grid-cols-2 items-center ${
+            !isEven ? "lg:grid-flow-col-dense" : ""
+          }`}
+        >
           {/* Content */}
           <div className={`space-y-8 ${!isEven ? "lg:col-start-2" : ""}`}>
             <div className="space-y-6">
@@ -189,7 +248,11 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                   } transition-all duration-300 hover:scale-110`}
                 >
                   <project.icon
-                    className={`h-8 w-8 ${project.color === "teal" ? "text-teal-600" : "text-orange-500"}`}
+                    className={`h-8 w-8 ${
+                      project.color === "teal"
+                        ? "text-teal-600"
+                        : "text-orange-500"
+                    }`}
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -212,8 +275,8 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                       project.status === "Active"
                         ? "bg-green-100 text-green-800"
                         : project.status === "Scaling"
-                          ? "bg-blue-100 text-blue-800"
-                          : "bg-yellow-100 text-yellow-800"
+                        ? "bg-blue-100 text-blue-800"
+                        : "bg-yellow-100 text-yellow-800"
                     }`}
                   >
                     {project.status}
@@ -221,9 +284,29 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                 </div>
               </div>
 
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl">{project.title}</h2>
+              {project.mapLink && (
+                <Link
+                  href={project.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center text-sm font-semibold z-50 ${
+                    project.color === "teal"
+                      ? "text-teal-700 hover:text-teal-900"
+                      : "text-orange-600 hover:text-orange-800"
+                  }`}
+                >
+                  <MapPin className="h-4 w-4 mr-2" />
+                  View location on Google Maps
+                </Link>
+              )}
 
-              <p className="text-xl text-gray-600 leading-relaxed">{project.description}</p>
+              <h2 className="text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl">
+                {project.title}
+              </h2>
+
+              <p className="text-xl text-gray-600 leading-relaxed">
+                {project.description}
+              </p>
             </div>
 
             {/* Features Grid */}
@@ -238,7 +321,11 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                   }`}
                 >
                   <CheckCircle
-                    className={`h-5 w-5 ${project.color === "teal" ? "text-teal-600" : "text-orange-500"}`}
+                    className={`h-5 w-5 ${
+                      project.color === "teal"
+                        ? "text-teal-600"
+                        : "text-orange-500"
+                    }`}
                   />
                   <span className="font-medium text-gray-800">{feature}</span>
                 </div>
@@ -313,16 +400,31 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
           {/* Image */}
           <div className={`relative ${!isEven ? "lg:col-start-1" : ""}`}>
             <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-105">
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-              />
+              {project.mapEmbedSrc ? (
+                <div className="aspect-video">
+                  <iframe
+                    src={project.mapEmbedSrc}
+                    title={`${project.title} location`}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              ) : (
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-full"
+                />
+              )}
               <div
-                className={`absolute inset-0 bg-gradient-to-t ${
-                  project.color === "teal" ? "from-teal-900/20 to-transparent" : "from-orange-900/20 to-transparent"
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${
+                  project.color === "teal"
+                    ? "from-teal-900/20 to-transparent"
+                    : "from-orange-900/20 to-transparent"
                 }`}
               ></div>
 
@@ -333,13 +435,34 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
                     project.status === "Active"
                       ? "bg-green-500 text-white"
                       : project.status === "Scaling"
-                        ? "bg-blue-500 text-white"
-                        : "bg-yellow-500 text-white"
+                      ? "bg-blue-500 text-white"
+                      : "bg-yellow-500 text-white"
                   } shadow-lg`}
                 >
                   {project.status}
                 </Badge>
               </div>
+
+              {project.mapLink && (
+                <Link
+                  href={project.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-6 right-6"
+                >
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    className={`shadow ${
+                      project.color === "teal"
+                        ? "bg-white text-teal-700 hover:bg-teal-50"
+                        : "bg-white text-orange-700 hover:bg-orange-50"
+                    }`}
+                  >
+                    Open in Google Maps
+                  </Button>
+                </Link>
+              )}
             </div>
 
             {/* Floating elements */}
@@ -357,12 +480,16 @@ function ProjectSection({ project, index, isEven }: { project: any; index: numbe
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default function ProjectsPage() {
-  const [heroRef, heroVisible] = useScrollAnimation({ rootMargin: "0px 0px -20% 0px" })
-  const [statsRef, statsVisible] = useScrollAnimation({ rootMargin: "0px 0px -10% 0px" })
+  const [heroRef, heroVisible] = useScrollAnimation({
+    rootMargin: "0px 0px -20% 0px",
+  });
+  const [statsRef, statsVisible] = useScrollAnimation({
+    rootMargin: "0px 0px -10% 0px",
+  });
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -372,7 +499,12 @@ export default function ProjectsPage() {
       <section className="relative bg-gradient-to-br from-teal-50 via-white to-orange-50 py-20 lg:py-32 overflow-hidden">
         {/* Aurora Background */}
         <div className="absolute inset-0 opacity-20">
-          <Aurora colorStops={["#0F766E", "#EA580C", "#0F766E"]} blend={0.8} amplitude={1.2} speed={0.5} />
+          <Aurora
+            colorStops={["#0F766E", "#EA580C", "#0F766E"]}
+            blend={0.8}
+            amplitude={1.2}
+            speed={0.5}
+          />
         </div>
 
         {/* Floating Elements */}
@@ -382,13 +514,17 @@ export default function ProjectsPage() {
         <div
           ref={heroRef}
           className={`container mx-auto px-4 md:px-6 transition-all duration-1000 delay-300 relative z-10 ${
-            heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            heroVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
           }`}
         >
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-teal-200">
               <Target className="h-4 w-4 text-teal-600" />
-              <span className="text-sm font-medium text-teal-800">Transforming Communities Through Innovation</span>
+              <span className="text-sm font-medium text-teal-800">
+                Transforming Communities Through Innovation
+              </span>
             </div>
             <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
               <span className="text-gray-900">Our</span>{" "}
@@ -397,9 +533,10 @@ export default function ProjectsPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive solutions for climate resilience and sustainable development across Africa. We combine
-              cutting-edge technology with local expertise to create lasting impact through Climate Oriented Resilience,
-              Empowerment & Development.
+              Comprehensive solutions for climate resilience and sustainable
+              development across Africa. We combine cutting-edge technology with
+              local expertise to create lasting impact through Climate Oriented
+              Resilience, Empowerment & Development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -417,10 +554,9 @@ export default function ProjectsPage() {
                 className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
               >
                 <Link href="/contact">
-                   <Users className="mr-2 h-5 w-5" />
-                    Partner With Us
+                  <Users className="mr-2 h-5 w-5" />
+                  Partner With Us
                 </Link>
-               
               </Button>
             </div>
           </div>
@@ -439,12 +575,18 @@ export default function ProjectsPage() {
         <div
           ref={statsRef}
           className={`container mx-auto px-4 md:px-6 transition-all duration-1000 delay-300 relative z-10 ${
-            statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            statsVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
           }`}
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Impact So Far</h2>
-            <p className="text-teal-100 text-lg">Making a difference across communities in Ethiopia</p>
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Our Impact So Far
+            </h2>
+            <p className="text-teal-100 text-lg">
+              Making a difference across communities in Ethiopia
+            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center text-white">
@@ -478,12 +620,19 @@ export default function ProjectsPage() {
 
       {/* Projects Sections */}
       {projects.map((project, index) => {
-        const isEven = index % 2 === 0
+        const isEven = index % 2 === 0;
 
-        return <ProjectSection key={project.id} project={project} index={index} isEven={isEven} />
+        return (
+          <ProjectSection
+            key={project.id}
+            project={project}
+            index={index}
+            isEven={isEven}
+          />
+        );
       })}
 
       <Footer />
     </div>
-  )
+  );
 }
