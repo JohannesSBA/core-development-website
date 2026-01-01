@@ -15,7 +15,6 @@ import {
   Target,
   Award,
   MapPin,
-  Truck,
 } from "lucide-react";
 import Image from "next/image";
 import Navbar from "@/components/navbar";
@@ -204,6 +203,12 @@ const projects = [
   },
 ];
 
+const stats = [
+  { label: "Communities Served", value: 40, suffix: "+", icon: MapPin },
+  { label: "Lives Impacted", value: 150, suffix: "K+", icon: Award },
+  { label: "Clean Energy Capacity", value: 25, suffix: " MW", icon: Zap },
+];
+
 function ProjectSection({
   project,
   index,
@@ -220,7 +225,7 @@ function ProjectSection({
   return (
     <section
       ref={projectRef}
-      className={`py-20 lg:py-32 ${
+      className={`relative py-12 lg:py-20 ${
         isEven ? "bg-white" : "bg-gradient-to-br from-gray-50 to-white"
       }`}
     >
@@ -231,251 +236,232 @@ function ProjectSection({
             : "opacity-0 translate-y-10"
         }`}
       >
-        {/* Rest of the project content remains the same */}
-        <div
-          className={`grid gap-16 lg:gap-20 lg:grid-cols-2 items-center ${
-            !isEven ? "lg:grid-flow-col-dense" : ""
-          }`}
-        >
-          {/* Content */}
-          <div className={`space-y-8 ${!isEven ? "lg:col-start-2" : ""}`}>
-            <div className="space-y-6">
-              {/* Project Header */}
+        <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-2xl">
+          <div
+            className={`absolute -top-24 right-0 h-64 w-64 rounded-full blur-3xl ${
+              project.color === "teal" ? "bg-teal-200/50" : "bg-orange-200/60"
+            }`}
+          ></div>
+          <div
+            className={`absolute -bottom-24 left-0 h-64 w-64 rounded-full blur-3xl ${
+              project.color === "teal" ? "bg-teal-100/60" : "bg-orange-100/70"
+            }`}
+          ></div>
+
+          <div
+            className={`relative grid items-stretch gap-12 lg:gap-16 lg:grid-cols-2 ${
+              !isEven ? "lg:grid-flow-col-dense" : ""
+            }`}
+          >
+            {/* Content */}
+            <div
+              className={`flex flex-col gap-8 p-8 lg:p-12 ${
+                !isEven ? "lg:col-start-2" : ""
+              } relative z-10`}
+            >
               <div className="flex flex-wrap items-center gap-3">
                 <div
-                  className={`inline-flex items-center space-x-3 p-3 rounded-full ${
-                    project.color === "teal" ? "bg-teal-100" : "bg-orange-100"
-                  } transition-all duration-300 hover:scale-110`}
+                  className={`inline-flex items-center space-x-3 rounded-full px-4 py-2 ${
+                    project.color === "teal" ? "bg-teal-50" : "bg-orange-50"
+                  } ring-1 ring-white/60 shadow-sm`}
                 >
                   <project.icon
-                    className={`h-8 w-8 ${
+                    className={`h-7 w-7 ${
                       project.color === "teal"
                         ? "text-teal-600"
                         : "text-orange-500"
                     }`}
                   />
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge
-                    variant="secondary"
-                    className={`${
-                      project.color === "teal"
-                        ? "bg-teal-50 text-teal-700 border-teal-200"
-                        : "bg-orange-50 text-orange-700 border-orange-200"
-                    }`}
-                  >
+                  <span className="text-sm font-semibold text-gray-800">
                     {project.category}
-                  </Badge>
-                  <Badge variant="outline" className="border-gray-300">
-                    <MapPin className="h-3 w-3 mr-1" />
-                    {project.location}
-                  </Badge>
-                  <Badge
-                    className={`${
-                      project.status === "Active"
-                        ? "bg-green-100 text-green-800"
-                        : project.status === "Scaling"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
-                  >
-                    {project.status}
-                  </Badge>
+                  </span>
                 </div>
-              </div>
-
-              {project.mapLink && (
-                <Link
-                  href={project.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center text-sm font-semibold z-50 ${
-                    project.color === "teal"
-                      ? "text-teal-700 hover:text-teal-900"
-                      : "text-orange-600 hover:text-orange-800"
-                  }`}
-                >
-                  <MapPin className="h-4 w-4 mr-2" />
-                  View location on Google Maps
-                </Link>
-              )}
-
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl">
-                {project.title}
-              </h2>
-
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 gap-3">
-              {project.features.map((feature: string, featureIndex: number) => (
-                <div
-                  key={featureIndex}
-                  className={`flex items-center space-x-3 p-4 rounded-lg border transition-all duration-300 hover:shadow-lg hover:scale-105 ${
-                    project.color === "teal"
-                      ? "border-teal-200 hover:border-teal-300 hover:bg-teal-50"
-                      : "border-orange-200 hover:border-orange-300 hover:bg-orange-50"
-                  }`}
-                >
-                  <CheckCircle
-                    className={`h-5 w-5 ${
-                      project.color === "teal"
-                        ? "text-teal-600"
-                        : "text-orange-500"
-                    }`}
-                  />
-                  <span className="font-medium text-gray-800">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Impact Stats */}
-            {/* <Card className="bg-gradient-to-r from-gray-50 to-white border-2 border-gray-100">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900">
-                  <Award className="h-5 w-5 mr-2 text-teal-600" />
-                  Project Impact
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center p-3 bg-white rounded-lg border">
-                    <div
-                      className={`text-lg font-bold ${project.color === "teal" ? "text-teal-600" : "text-orange-500"}`}
-                    >
-                      {project.impact.capacity}
-                    </div>
-                    <p className="text-sm text-gray-600">Capacity</p>
-                  </div>
-                  <div className="text-center p-3 bg-white rounded-lg border">
-                    <div
-                      className={`text-lg font-bold ${project.color === "teal" ? "text-teal-600" : "text-orange-500"}`}
-                    >
-                      {project.impact.communities}
-                    </div>
-                    <p className="text-sm text-gray-600">Communities</p>
-                  </div>
-                  <div className="text-center p-3 bg-white rounded-lg border">
-                    <div
-                      className={`text-lg font-bold ${project.color === "teal" ? "text-teal-600" : "text-orange-500"}`}
-                    >
-                      {project.impact.beneficiaries}
-                    </div>
-                    <p className="text-sm text-gray-600">Beneficiaries</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card> */}
-
-            {/* <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className={`group transition-all duration-300 transform hover:scale-105 ${
-                  project.color === "teal"
-                    ? "bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800"
-                    : "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
-                } text-white shadow-lg hover:shadow-xl`}
-              >
-                Learn More About This Project
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className={`border-2 ${
-                  project.color === "teal"
-                    ? "border-teal-500 text-teal-600 hover:bg-teal-50"
-                    : "border-orange-500 text-orange-600 hover:bg-orange-50"
-                } shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent`}
-              >
-                <Users className="mr-2 h-5 w-5" />
-                Get Involved
-              </Button>
-            </div> */}
-          </div>
-
-          {/* Image */}
-          <div className={`relative ${!isEven ? "lg:col-start-1" : ""}`}>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-105">
-              {project.mapEmbedSrc ? (
-                <div className="aspect-video">
-                  <iframe
-                    src={project.mapEmbedSrc}
-                    title={`${project.title} location`}
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-full border-0"
-                  ></iframe>
-                </div>
-              ) : (
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full"
-                />
-              )}
-              <div
-                className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${
-                  project.color === "teal"
-                    ? "from-teal-900/20 to-transparent"
-                    : "from-orange-900/20 to-transparent"
-                }`}
-              ></div>
-
-              {/* Project Status Badge */}
-              <div className="absolute top-6 left-6">
+                <Badge variant="outline" className="border-gray-200 bg-white/80">
+                  <MapPin className="h-3.5 w-3.5 mr-1" />
+                  {project.location}
+                </Badge>
                 <Badge
-                  className={`${
+                  className={`border-0 ${
                     project.status === "Active"
-                      ? "bg-green-500 text-white"
+                      ? "bg-green-100 text-green-800"
                       : project.status === "Scaling"
-                      ? "bg-blue-500 text-white"
-                      : "bg-yellow-500 text-white"
-                  } shadow-lg`}
+                      ? "bg-blue-100 text-blue-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}
                 >
                   {project.status}
                 </Badge>
               </div>
 
-              {project.mapLink && (
-                <Link
-                  href={project.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-6 right-6"
-                >
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    className={`shadow ${
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl">
+                  {project.title}
+                </h2>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                  {project.description}
+                </p>
+                {project.mapLink && (
+                  <Link
+                    href={project.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center text-sm font-semibold ${
                       project.color === "teal"
-                        ? "bg-white text-teal-700 hover:bg-teal-50"
-                        : "bg-white text-orange-700 hover:bg-orange-50"
+                        ? "text-teal-700 hover:text-teal-900"
+                        : "text-orange-600 hover:text-orange-800"
                     }`}
                   >
-                    Open in Google Maps
-                  </Button>
-                </Link>
-              )}
+                    <MapPin className="h-4 w-4 mr-2" />
+                    View location on Google Maps
+                  </Link>
+                )}
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {project.features.map((feature: string, featureIndex: number) => (
+                  <span
+                    key={featureIndex}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm ${
+                      project.color === "teal"
+                        ? "bg-teal-50 text-teal-800 ring-1 ring-teal-100"
+                        : "bg-orange-50 text-orange-800 ring-1 ring-orange-100"
+                    }`}
+                  >
+                    <CheckCircle
+                      className={`h-4 w-4 ${
+                        project.color === "teal"
+                          ? "text-teal-600"
+                          : "text-orange-500"
+                      }`}
+                    />
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-2xl border border-gray-100 bg-white/70 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-wide text-gray-500">
+                    Capacity
+                  </p>
+                  <p
+                    className={`text-lg font-semibold ${
+                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                    }`}
+                  >
+                    {project.impact.capacity}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 bg-white/70 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-wide text-gray-500">
+                    Communities
+                  </p>
+                  <p
+                    className={`text-lg font-semibold ${
+                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                    }`}
+                  >
+                    {project.impact.communities}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 bg-white/70 p-4 shadow-sm">
+                  <p className="text-xs uppercase tracking-wide text-gray-500">
+                    Beneficiaries
+                  </p>
+                  <p
+                    className={`text-lg font-semibold ${
+                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                    }`}
+                  >
+                    {project.impact.beneficiaries}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Floating elements */}
+            {/* Media */}
             <div
-              className={`absolute -top-4 -right-4 w-20 h-20 rounded-full ${
-                project.color === "teal" ? "bg-teal-500" : "bg-orange-500"
-              } opacity-20 animate-pulse`}
-            ></div>
-            <div
-              className={`absolute -bottom-4 -left-4 w-16 h-16 rounded-full ${
-                project.color === "teal" ? "bg-teal-400" : "bg-orange-400"
-              } opacity-30 animate-bounce`}
-            ></div>
+              className={`relative p-8 lg:p-12 ${
+                !isEven ? "lg:col-start-1" : ""
+              }`}
+            >
+              <div className="relative overflow-hidden rounded-2xl ring-1 ring-gray-200 bg-gray-50 shadow-xl">
+                {project.mapEmbedSrc ? (
+                  <div className="aspect-[4/3]">
+                    <iframe
+                      src={project.mapEmbedSrc}
+                      title={`${project.title} location`}
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="h-full w-full border-0"
+                    ></iframe>
+                  </div>
+                ) : (
+                  <div className="aspect-[4/3]">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={800}
+                      height={600}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${
+                    project.color === "teal"
+                      ? "from-teal-900/20 to-transparent"
+                      : "from-orange-900/20 to-transparent"
+                  }`}
+                ></div>
+
+                <div className="absolute top-6 left-6">
+                  <Badge
+                    className={`${
+                      project.status === "Active"
+                        ? "bg-green-500 text-white"
+                        : project.status === "Scaling"
+                        ? "bg-blue-500 text-white"
+                        : "bg-yellow-500 text-white"
+                    } shadow-lg`}
+                  >
+                    {project.status}
+                  </Badge>
+                </div>
+
+                {project.mapLink && (
+                  <Link
+                    href={project.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute top-6 right-6"
+                  >
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      className={`shadow ${
+                        project.color === "teal"
+                          ? "bg-white text-teal-700 hover:bg-teal-50"
+                          : "bg-white text-orange-700 hover:bg-orange-50"
+                      }`}
+                    >
+                      Open in Google Maps
+                    </Button>
+                  </Link>
+                )}
+              </div>
+              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                <MapPin
+                  className={`h-4 w-4 ${
+                    project.color === "teal" ? "text-teal-600" : "text-orange-500"
+                  }`}
+                />
+                <span>
+                  Ground-level view to explore the project location and access directions.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -519,58 +505,101 @@ export default function ProjectsPage() {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-teal-200">
-              <Target className="h-4 w-4 text-teal-600" />
-              <span className="text-sm font-medium text-teal-800">
-                Transforming Communities Through Innovation
-              </span>
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr,0.9fr]">
+            <div className="space-y-6 text-left">
+              <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-teal-200 shadow-sm">
+                <Target className="h-4 w-4 text-teal-600" />
+                <span className="text-sm font-medium text-teal-800">
+                  Transforming Communities Through Innovation
+                </span>
+              </div>
+              <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
+                <span className="text-gray-900">Our</span>{" "}
+                <span className="bg-gradient-to-r from-teal-600 to-orange-500 bg-clip-text text-transparent">
+                  Projects
+                </span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
+                Comprehensive solutions for climate resilience and sustainable development across Africa—powered by renewable energy, local partnerships, and community-first design.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-teal-700 ring-1 ring-teal-100">
+                  Renewable-first infrastructure
+                </span>
+                <span className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-orange-600 ring-1 ring-orange-100">
+                  Community co-creation
+                </span>
+                <span className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-gray-200">
+                  Lasting social impact
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <Globe className="mr-2 h-5 w-5" />
+                  Explore Our Impact
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  asChild
+                  size="lg"
+                  className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
+                >
+                  <Link href="/contact">
+                    <Users className="mr-2 h-5 w-5" />
+                    Partner With Us
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-              <span className="text-gray-900">Our</span>{" "}
-              <span className="bg-gradient-to-r from-teal-600 to-orange-500 bg-clip-text text-transparent">
-                Projects
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive solutions for climate resilience and sustainable
-              development across Africa. We combine cutting-edge technology with
-              local expertise to create lasting impact through Climate Oriented
-              Resilience, Empowerment & Development.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                <Globe className="mr-2 h-5 w-5" />
-                Explore Our Impact
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                asChild
-                size="lg"
-                className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
-              >
-                <Link href="/contact">
-                  <Users className="mr-2 h-5 w-5" />
-                  Partner With Us
-                </Link>
-              </Button>
+
+            <div className="relative">
+              <div className="relative rounded-3xl border border-white/70 bg-white/80 shadow-2xl backdrop-blur p-6 sm:p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <p className="text-sm font-semibold text-teal-700">Impact pulse</p>
+                    <p className="text-sm text-gray-500">Live view of our current reach</p>
+                  </div>
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 opacity-80" />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {stats.map((stat, index) => (
+                    <div
+                      key={stat.label}
+                      className={`rounded-2xl border border-gray-100 bg-white/90 px-4 py-5 shadow-sm ${index === 1 ? "sm:translate-y-2" : ""}`}
+                    >
+                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <stat.icon className="h-4 w-4 text-teal-600" />
+                        {stat.label}
+                      </div>
+                      <div className="text-3xl font-bold text-gray-900">
+                        <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex items-center gap-3 text-sm text-gray-600">
+                  <div className="flex -space-x-2">
+                    <span className="h-9 w-9 rounded-full bg-teal-100 border border-white"></span>
+                    <span className="h-9 w-9 rounded-full bg-orange-100 border border-white"></span>
+                    <span className="h-9 w-9 rounded-full bg-gray-100 border border-white"></span>
+                  </div>
+                  <span>Delivered with on-the-ground teams and trusted partners.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-teal-600 via-teal-700 to-orange-600 relative overflow-hidden">
+      <section className="relative overflow-hidden py-20 bg-gradient-to-br from-teal-700 via-teal-800 to-orange-600">
         <div className="absolute inset-0 bg-black/10"></div>
-
-        {/* Animated background elements */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-24 h-24 bg-orange-300/20 rounded-full animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-300/20 rounded-full animate-ping"></div>
+        <div className="absolute top-0 left-1/4 h-64 w-64 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 h-64 w-64 translate-y-1/2 rounded-full bg-orange-300/20 blur-3xl"></div>
 
         <div
           ref={statsRef}
@@ -580,40 +609,46 @@ export default function ProjectsPage() {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Our Impact So Far
-            </h2>
-            <p className="text-teal-100 text-lg">
-              Making a difference across communities in Ethiopia
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+            <div className="space-y-3 max-w-2xl">
+              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-teal-50 ring-1 ring-white/20">
+                <Globe className="h-4 w-4" />
+                By the numbers
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Our Impact So Far
+              </h2>
+              <p className="text-teal-100 text-lg">
+                Measuring the reach of our clean energy, mobility, and water initiatives across Ethiopia.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-teal-50 bg-white/10 px-4 py-3 rounded-full ring-1 ring-white/20 backdrop-blur">
+              <Shield className="h-4 w-4" />
+              Transparent metrics, updated with every deployment.
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center text-white">
-            {/* <div className="space-y-2">
-              <div className="text-4xl font-bold">
-                <AnimatedCounter end={3} suffix="+" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="group rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/30"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-teal-50">
+                    <stat.icon className="h-5 w-5 text-white/80" />
+                    <span className="text-sm font-semibold">{stat.label}</span>
+                  </div>
+                  <div className="h-10 w-10 rounded-full bg-white/10 ring-1 ring-white/20" />
+                </div>
+                <div className="mt-3 text-4xl font-bold text-white">
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="mt-2 text-sm text-teal-100">
+                  Growth driven by local teams, reliable infrastructure, and community trust.
+                </p>
               </div>
-              <p className="text-white/90">Active Projects</p>
-            </div> */}
-            <div className="space-y-2">
-              <div className="text-4xl font-bold">
-                <AnimatedCounter end={40} suffix="+" />
-              </div>
-              <p className="text-white/90">Communities Served</p>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold">
-                <AnimatedCounter end={150} suffix="K+" />
-              </div>
-              <p className="text-white/90">Lives Impacted</p>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold">
-                <AnimatedCounter end={25} suffix=" MW" />
-              </div>
-              <p className="text-white/90">Clean Energy Capacity</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
