@@ -276,7 +276,10 @@ function ProjectSection({
                     {project.category}
                   </span>
                 </div>
-                <Badge variant="outline" className="border-gray-200 bg-white/80">
+                <Badge
+                  variant="outline"
+                  className="border-gray-200 bg-white/80"
+                >
                   <MapPin className="h-3.5 w-3.5 mr-1" />
                   {project.location}
                 </Badge>
@@ -318,25 +321,27 @@ function ProjectSection({
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {project.features.map((feature: string, featureIndex: number) => (
-                  <span
-                    key={featureIndex}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm ${
-                      project.color === "teal"
-                        ? "bg-teal-50 text-teal-800 ring-1 ring-teal-100"
-                        : "bg-orange-50 text-orange-800 ring-1 ring-orange-100"
-                    }`}
-                  >
-                    <CheckCircle
-                      className={`h-4 w-4 ${
+                {project.features.map(
+                  (feature: string, featureIndex: number) => (
+                    <span
+                      key={featureIndex}
+                      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm ${
                         project.color === "teal"
-                          ? "text-teal-600"
-                          : "text-orange-500"
+                          ? "bg-teal-50 text-teal-800 ring-1 ring-teal-100"
+                          : "bg-orange-50 text-orange-800 ring-1 ring-orange-100"
                       }`}
-                    />
-                    {feature}
-                  </span>
-                ))}
+                    >
+                      <CheckCircle
+                        className={`h-4 w-4 ${
+                          project.color === "teal"
+                            ? "text-teal-600"
+                            : "text-orange-500"
+                        }`}
+                      />
+                      {feature}
+                    </span>
+                  ),
+                )}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -346,7 +351,9 @@ function ProjectSection({
                   </p>
                   <p
                     className={`text-lg font-semibold ${
-                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                      project.color === "teal"
+                        ? "text-teal-700"
+                        : "text-orange-600"
                     }`}
                   >
                     {project.impact.capacity}
@@ -358,7 +365,9 @@ function ProjectSection({
                   </p>
                   <p
                     className={`text-lg font-semibold ${
-                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                      project.color === "teal"
+                        ? "text-teal-700"
+                        : "text-orange-600"
                     }`}
                   >
                     {project.impact.communities}
@@ -370,7 +379,9 @@ function ProjectSection({
                   </p>
                   <p
                     className={`text-lg font-semibold ${
-                      project.color === "teal" ? "text-teal-700" : "text-orange-600"
+                      project.color === "teal"
+                        ? "text-teal-700"
+                        : "text-orange-600"
                     }`}
                   >
                     {project.impact.beneficiaries}
@@ -454,11 +465,14 @@ function ProjectSection({
               <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
                 <MapPin
                   className={`h-4 w-4 ${
-                    project.color === "teal" ? "text-teal-600" : "text-orange-500"
+                    project.color === "teal"
+                      ? "text-teal-600"
+                      : "text-orange-500"
                   }`}
                 />
                 <span>
-                  Ground-level view to explore the project location and access directions.
+                  Ground-level view to explore the project location and access
+                  directions.
                 </span>
               </div>
             </div>
@@ -520,7 +534,9 @@ export default function ProjectsPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
-                Comprehensive solutions for climate resilience and sustainable development across Africa—powered by renewable energy, local partnerships, and community-first design.
+                Comprehensive solutions for climate resilience and sustainable
+                development across Africa—powered by renewable energy, local
+                partnerships, and community-first design.
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-teal-700 ring-1 ring-teal-100">
@@ -560,8 +576,12 @@ export default function ProjectsPage() {
               <div className="relative rounded-3xl border border-white/70 bg-white/80 shadow-2xl backdrop-blur p-6 sm:p-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <p className="text-sm font-semibold text-teal-700">Impact pulse</p>
-                    <p className="text-sm text-gray-500">Live view of our current reach</p>
+                    <p className="text-sm font-semibold text-teal-700">
+                      Impact pulse
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Live view of our current reach
+                    </p>
                   </div>
                   <div className="h-10 w-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 opacity-80" />
                 </div>
@@ -569,25 +589,22 @@ export default function ProjectsPage() {
                   {stats.map((stat, index) => (
                     <div
                       key={stat.label}
-                      className={`rounded-2xl border border-gray-100 bg-white/90 px-4 py-5 shadow-sm ${index === 1 ? "sm:translate-y-2" : ""}`}
+                      className={`rounded-2xl border border-gray-100 bg-white/90 px-4 py-5 shadow-sm ${
+                        index === 1 ? "sm:translate-y-2" : ""
+                      }`}
                     >
                       <div className="flex items-center gap-2 text-sm text-gray-500">
                         <stat.icon className="h-4 w-4 text-teal-600" />
                         {stat.label}
                       </div>
                       <div className="text-3xl font-bold text-gray-900">
-                        <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                        <AnimatedCounter
+                          end={stat.value}
+                          suffix={stat.suffix}
+                        />
                       </div>
                     </div>
                   ))}
-                </div>
-                <div className="mt-6 flex items-center gap-3 text-sm text-gray-600">
-                  <div className="flex -space-x-2">
-                    <span className="h-9 w-9 rounded-full bg-teal-100 border border-white"></span>
-                    <span className="h-9 w-9 rounded-full bg-orange-100 border border-white"></span>
-                    <span className="h-9 w-9 rounded-full bg-gray-100 border border-white"></span>
-                  </div>
-                  <span>Delivered with on-the-ground teams and trusted partners.</span>
                 </div>
               </div>
             </div>
@@ -619,7 +636,8 @@ export default function ProjectsPage() {
                 Our Impact So Far
               </h2>
               <p className="text-teal-100 text-lg">
-                Measuring the reach of our clean energy, mobility, and water initiatives across Ethiopia.
+                Measuring the reach of our clean energy, mobility, and water
+                initiatives across Ethiopia.
               </p>
             </div>
             <div className="flex items-center gap-3 text-sm text-teal-50 bg-white/10 px-4 py-3 rounded-full ring-1 ring-white/20 backdrop-blur">
@@ -645,7 +663,8 @@ export default function ProjectsPage() {
                   <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                 </div>
                 <p className="mt-2 text-sm text-teal-100">
-                  Growth driven by local teams, reliable infrastructure, and community trust.
+                  Growth driven by local teams, reliable infrastructure, and
+                  community trust.
                 </p>
               </div>
             ))}
