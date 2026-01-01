@@ -111,12 +111,11 @@ const projects = [
     location: "Ethiopia",
     status: "Active",
     description:
-      "Deploying 100% renewable energy charging stations for electric vehicles in major cities across Ethiopia.",
+      "Deploying charging stations for electric vehicles in major cities across Ethiopia.",
     mapLink: "https://maps.app.goo.gl/KiUiHgPMbrWtYaDLA",
     mapEmbedSrc:
       "https://www.google.com/maps?q=9.0231303,38.7750861&z=18&output=embed",
     features: [
-      "100% Renewable Energy",
       "Reduces GHG Emissions",
       "Charging/Swapping Stations",
       "Job Creation & Training",
