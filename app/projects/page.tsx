@@ -554,7 +554,7 @@ export default function ProjectsPage() {
                   className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Globe className="mr-2 h-5 w-5" />
-                  Explore Our Impact
+                  Expected Impact
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button
@@ -632,7 +632,7 @@ export default function ProjectsPage() {
                 By the numbers
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Our Impact So Far
+                Expected Impact
               </h2>
               <p className="text-teal-100 text-lg">
                 Measuring the reach of our clean energy, mobility, and water
