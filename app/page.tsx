@@ -129,8 +129,8 @@ export default function HomePage() {
                   </span>
                   <br />
                   <span className="text-[#E27025]">Empowerment</span>
-                  <br />
-                  <span className="text-white bg-clip-text text-transparent bg-gradient-to-r">& Development</span>
+                  {/* <br /> */}
+                  {/* <span className="text-white bg-clip-text text-transparent bg-gradient-to-r">& Development</span> */}
                 </h1>
                 <p className="text-xl text-gray-300 max-w-[600px] leading-relaxed">
                   CORE Development leads Africa's transition to climate resilient and sustainable development through
