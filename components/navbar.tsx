@@ -17,7 +17,7 @@ export default function Navbar() {
     { href: "/projects", label: "Projects" },
     { href: "/founders", label: "Founders" },
     { href: "/contact", label: "Contact" },
-    
+    { href: "/corecharge", label: "CORE Charge" },
   ]
 
   const pathname = usePathname();
@@ -25,20 +25,19 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex shrink-0 items-center space-x-2">
             <Image src="/CoreLogo.png" width={50} height={50} alt="logo" />
-            {/* <span className="text-xl font-bold text-gray-900">Development</span> */}
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation — pinned to the true center of the header */}
+          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium text-gray-600 hover:text-green-600 hover:scale-105 transition-colors ${pathname === item.href ? "text-green-600" : ""}`}
+                className={`text-sm font-medium transition-colors hover:text-green-600 hover:scale-105 ${pathname === item.href ? "text-green-600" : "text-gray-600"}`}
               >
                 {item.label}
               </Link>
@@ -46,7 +45,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex shrink-0 items-center space-x-4">
             <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50" asChild>
               <Link href="/projects">
                 Get Involved

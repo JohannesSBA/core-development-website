@@ -195,6 +195,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CORE Charge Banner */}
+      <section className="bg-[#0f3a3e] py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 rounded-2xl border border-teal-500/30 bg-teal-900/40 px-8 py-8 backdrop-blur-sm">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+                <span className="text-teal-300 text-xs font-semibold tracking-widest uppercase">Now Live on iOS</span>
+              </div>
+              <h3 className="text-white font-bold text-xl sm:text-2xl">CORE Charge — Smart EV Charging</h3>
+              <p className="text-teal-100/70 text-sm max-w-md">
+                Africa's first intelligent EV charging platform is here. Find stations, start sessions, and manage your wallet — built for Ethiopian roads.
+              </p>
+            </div>
+            <Link
+              href="/corecharge"
+              className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 transition-colors text-sm"
+            >
+              Download the App
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Vision Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
