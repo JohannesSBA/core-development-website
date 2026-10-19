@@ -122,11 +122,17 @@ export default function Aurora({
     const ctn = ctnDom.current
     if (!ctn) return
 
-    const renderer = new Renderer({
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: true,
-    })
+    // This shader requires WebGL 2. Keep the existing CSS background when
+    // graphics acceleration is unavailable instead of crashing the page.
+    const canvas = document.createElement("canvas")
+    const attributes = { alpha: true, premultipliedAlpha: true, antialias: true }
+    let renderer: Renderer
+    try {
+      if (!canvas.getContext("webgl2", attributes)) return
+      renderer = new Renderer({ canvas, ...attributes })
+    } catch {
+      return
+    }
     const gl = renderer.gl
     gl.clearColor(0, 0, 0, 0)
     gl.enable(gl.BLEND)

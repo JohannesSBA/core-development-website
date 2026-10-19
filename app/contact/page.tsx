@@ -252,7 +252,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-green-600" />
-                    <span className="text-gray-700">+251 91 178 1859</span>
+                    <span className="text-gray-700">+251 95 937 3839</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Globe className="h-5 w-5 text-green-600" />
